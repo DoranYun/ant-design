@@ -700,11 +700,11 @@ var Table = function (_React$Component) {
             var pagination = this.state.pagination;
 
             var total = pagination.total || this.getLocalData().length;
-            if (extra || total > 0) {
+            if (total > 0) {
                 return React.createElement(
                     'div',
                     { className: prefixCls + '-extra-wrapper' },
-                    React.createElement(
+                    extra && React.createElement(
                         'div',
                         { className: prefixCls + '-extra' },
                         extra

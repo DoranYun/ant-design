@@ -859,10 +859,10 @@ export default class Table<T> extends React.Component<TableProps<T>, any> {
     const { extra, prefixCls } = this.props;
     const { pagination } = this.state;
     let total = pagination.total || this.getLocalData().length;
-    if (extra || total > 0) {
+    if (total > 0) {
       return (
         <div className={`${prefixCls}-extra-wrapper`}>
-          <div className={`${prefixCls}-extra`}>{extra}</div>
+          {extra && <div className={`${prefixCls}-extra`}>{extra}</div>}
           {this.renderPagination()}
         </div>
       );
