@@ -53,6 +53,7 @@ export interface TableProps<T> {
     bodyStyle?: React.CSSProperties;
     className?: string;
     style?: React.CSSProperties;
+    extra?: React.ReactNode;
 }
 export interface TableContext {
     antLocale?: {
@@ -75,6 +76,7 @@ export default class Table<T> extends React.Component<TableProps<T>, any> {
         onChange: any;
         locale: any;
         dropdownPrefixCls: any;
+        extra: any;
     };
     static defaultProps: {
         dataSource: never[];
@@ -89,6 +91,7 @@ export default class Table<T> extends React.Component<TableProps<T>, any> {
         locale: {};
         rowKey: string;
         showHeader: boolean;
+        extra: null;
     };
     static contextTypes: {
         antLocale: any;
@@ -153,6 +156,7 @@ export default class Table<T> extends React.Component<TableProps<T>, any> {
     renderColumnsDropdown(columns: any): any[];
     handleShowSizeChange: (current: any, pageSize: any) => void;
     renderPagination(): JSX.Element | null;
+    renderExtra(): JSX.Element | null;
     prepareParamsArguments(state: any): [any, string[], Object];
     findColumn(myKey: any): any;
     getCurrentPageData(): T[];

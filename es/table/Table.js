@@ -518,13 +518,17 @@ var Table = function (_React$Component) {
 
             var isSortColumn = this.isSortColumn(column);
             if (!isSortColumn) {
+                // 当前列未排序
                 sortOrder = order;
                 sortColumn = column;
             } else {
+                // 当前列已排序
                 if (sortOrder === order) {
+                    // 切换为未排序状态
                     sortOrder = '';
                     sortColumn = null;
                 } else {
+                    // 切换为排序状态
                     sortOrder = order;
                 }
             }
@@ -686,6 +690,22 @@ var Table = function (_React$Component) {
             }
             var total = pagination.total || this.getLocalData().length;
             return total > 0 ? React.createElement(Pagination, _extends({ key: 'pagination' }, pagination, { className: classNames(pagination.className, this.props.prefixCls + '-pagination'), onChange: this.handlePageChange, total: total, size: size, current: this.getMaxCurrent(total), onShowSizeChange: this.handleShowSizeChange })) : null;
+        }
+    }, {
+        key: 'renderExtra',
+        value: function renderExtra() {
+            var _props3 = this.props,
+                extra = _props3.extra,
+                prefixCls = _props3.prefixCls;
+
+            if (extra) {
+                return React.createElement(
+                    'div',
+                    { className: prefixCls + '-extra' },
+                    extra
+                );
+            }
+            return null;
         }
         // Get pagination, filters, sorter
 
@@ -849,7 +869,12 @@ var Table = function (_React$Component) {
                     Spin,
                     _extends({}, loading, { className: loading ? paginationPatchClass + ' ' + prefixCls + '-spin-holder' : '' }),
                     table,
-                    this.renderPagination()
+                    React.createElement(
+                        'div',
+                        { className: prefixCls + '-extra-wrapper' },
+                        this.renderExtra(),
+                        this.renderPagination()
+                    )
                 )
             );
         }
@@ -874,7 +899,8 @@ Table.propTypes = {
     bordered: PropTypes.bool,
     onChange: PropTypes.func,
     locale: PropTypes.object,
-    dropdownPrefixCls: PropTypes.string
+    dropdownPrefixCls: PropTypes.string,
+    extra: PropTypes.node
 };
 Table.defaultProps = {
     dataSource: [],
@@ -888,7 +914,8 @@ Table.defaultProps = {
     indentSize: 20,
     locale: {},
     rowKey: 'key',
-    showHeader: true
+    showHeader: true,
+    extra: null
 };
 Table.contextTypes = {
     antLocale: PropTypes.object
