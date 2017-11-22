@@ -697,12 +697,19 @@ var Table = function (_React$Component) {
             var _props3 = this.props,
                 extra = _props3.extra,
                 prefixCls = _props3.prefixCls;
+            var pagination = this.state.pagination;
 
-            if (extra) {
+            var total = pagination.total || this.getLocalData().length;
+            if (extra || total > 0) {
                 return React.createElement(
                     'div',
-                    { className: prefixCls + '-extra' },
-                    extra
+                    { className: prefixCls + '-extra-wrapper' },
+                    React.createElement(
+                        'div',
+                        { className: prefixCls + '-extra' },
+                        extra
+                    ),
+                    this.renderPagination()
                 );
             }
             return null;
@@ -869,12 +876,7 @@ var Table = function (_React$Component) {
                     Spin,
                     _extends({}, loading, { className: loading ? paginationPatchClass + ' ' + prefixCls + '-spin-holder' : '' }),
                     table,
-                    React.createElement(
-                        'div',
-                        { className: prefixCls + '-extra-wrapper' },
-                        this.renderExtra(),
-                        this.renderPagination()
-                    )
+                    this.renderExtra()
                 )
             );
         }

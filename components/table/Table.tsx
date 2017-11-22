@@ -857,8 +857,15 @@ export default class Table<T> extends React.Component<TableProps<T>, any> {
 
   renderExtra() {
     const { extra, prefixCls } = this.props;
-    if (extra) {
-      return <div className={`${prefixCls}-extra`}>{extra}</div>;
+    const { pagination } = this.state;
+    let total = pagination.total || this.getLocalData().length;
+    if (extra || total > 0) {
+      return (
+        <div className={`${prefixCls}-extra-wrapper`}>
+          <div className={`${prefixCls}-extra`}>{extra}</div>
+          {this.renderPagination()}
+        </div>
+      );
     }
 
     return null;
@@ -1033,10 +1040,7 @@ export default class Table<T> extends React.Component<TableProps<T>, any> {
           className={loading ? `${paginationPatchClass} ${prefixCls}-spin-holder` : ''}
         >
           {table}
-          <div className={`${prefixCls}-extra-wrapper`}>
-            {this.renderExtra()}
-            {this.renderPagination()}
-          </div>
+          {this.renderExtra()}
         </Spin>
       </div>
     );

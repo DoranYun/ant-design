@@ -14,7 +14,7 @@ title:
 Simple table with actions.
 
 ````jsx
-import { Table, Icon } from 'antd';
+import { Table, Icon, Button } from 'antd';
 
 const columns = [{
   title: 'Name',
@@ -62,5 +62,5 @@ const data = [{
   address: 'Sidney No. 1 Lake Park',
 }];
 
-ReactDOM.render(<Table columns={columns} dataSource={data} />, mountNode);
+ReactDOM.render(<Table columns={columns} dataSource={data} extra={<Button>Click me</Button>} />, mountNode);
 ````

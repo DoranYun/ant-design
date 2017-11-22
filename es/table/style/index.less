@@ -1,7 +1,7 @@
-@import '../../style/themes/default';
-@import '../../style/mixins/index';
+@import "../../style/themes/default";
+@import "../../style/mixins/index";
 
-@table-prefix-cls: ~'@{ant-prefix}-table';
+@table-prefix-cls: ~"@{ant-prefix}-table";
 
 .@{table-prefix-cls}-wrapper {
   .clearfix;
@@ -30,7 +30,7 @@
   &-thead > tr > th {
     background: @table-header-bg;
     font-weight: 500;
-    transition: background 0.3s ease;
+    transition: background .3s ease;
     text-align: left;
     color: @heading-color;
 
@@ -38,14 +38,13 @@
       text-align: center;
     }
 
-    .@{iconfont-css-prefix}-filter,
-    .@{table-prefix-cls}-filter-icon {
+    .@{iconfont-css-prefix}-filter, .@{table-prefix-cls}-filter-icon {
       position: relative;
       margin-left: 4px;
       font-size: @font-size-base;
       cursor: pointer;
       color: #999;
-      transition: all 0.3s;
+      transition: all .3s;
       width: 14px;
 
       &:hover {
@@ -69,12 +68,12 @@
 
   &-tbody > tr > td {
     border-bottom: @border-width-base @border-style-base @border-color-split;
-    transition: all 0.3s;
+    transition: all .3s;
   }
 
   &-thead > tr,
   &-tbody > tr {
-    transition: all 0.3s;
+    transition: all .3s;
     &.@{table-prefix-cls}-row-hover,
     &:hover {
       & > td {
@@ -345,7 +344,7 @@
       line-height: 4px;
       height: 4px;
       color: #999;
-      transition: all 0.3s;
+      transition: all .3s;
     }
   }
 
@@ -496,9 +495,7 @@
     }
 
     > .@{ant-prefix}-dropdown-menu > .@{ant-prefix}-dropdown-menu-item:last-child,
-    > .@{ant-prefix}-dropdown-menu
-      > .@{ant-prefix}-dropdown-menu-submenu:last-child
-      .@{ant-prefix}-dropdown-menu-submenu-title {
+    > .@{ant-prefix}-dropdown-menu > .@{ant-prefix}-dropdown-menu-submenu:last-child .@{ant-prefix}-dropdown-menu-submenu-title {
       border-radius: 0;
     }
 
@@ -532,7 +529,7 @@
 
     .@{iconfont-css-prefix}-down {
       color: #999;
-      transition: all 0.3s;
+      transition: all .3s;
     }
 
     &-menu {
@@ -587,7 +584,7 @@
       }
     }
 
-    &[class*='@{table-prefix-cls}-row-level-0'] .@{table-prefix-cls}-selection-column > span {
+    &[class*="@{table-prefix-cls}-row-level-0"] .@{table-prefix-cls}-selection-column > span {
       display: inline-block;
     }
   }
@@ -636,7 +633,7 @@
     position: absolute;
     top: 0;
     overflow: hidden;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow .3s ease;
     border-radius: 0;
     table {
       width: auto;
